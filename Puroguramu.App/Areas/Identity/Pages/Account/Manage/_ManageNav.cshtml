@@ -1,0 +1,29 @@
+@using Puroguramu.Infrastructures.Data.Entities
+@inject SignInManager<IdentityPuroguramuUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+<ul class="flex flex-col space-y-2">
+    <li>
+        <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./Index">Profile</a>
+    </li>
+    <li>
+        <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./Email">Email</a>
+    </li>
+    <li>
+        <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./ChangePassword">Password</a>
+    </li>
+    @if (hasExternalLogins)
+    {
+        <li>
+            <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./ExternalLogins">External logins</a>
+        </li>
+    }
+    @* Not implemented *@
+    @* <li> *@
+    @*     <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./TwoFactorAuthentication">Two-factor authentication</a> *@
+    @* </li> *@
+    @* <li> *@
+    @*     <a class="block px-4 py-2 rounded-md text-sm font-semibold text-gray-900 hover:bg-gray-100" asp-page="./PersonalData">Personal data</a> *@
+    @* </li> *@
+</ul>

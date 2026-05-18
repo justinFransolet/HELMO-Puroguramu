@@ -1,0 +1,36 @@
+﻿@page
+@model Puroguramu.App.Pages.IndexModel
+
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+          <title>@ViewData["Title"]</title>
+          <meta charset="UTF-8">
+    </head>
+    <body class="bg-gray-100">
+        
+        
+    <main class="container mx-auto mt-8">
+        <div class="text-center">
+            <div class="flex justify-center">
+                <img class="logo items-center" src="@Url.Content("~/images/logo.png")" alt="logo" width="400rem" height="300rem"/>
+            </div>
+            
+            <br/>
+            <br/>
+            
+            <h2 class="text-3xl font-semibold mb-4">Bienvenue sur Notre Plateforme</h2>
+            <p class="text-lg text-gray-700 mb-4">Cette application permet aux programmeurs débutants de s'exercer à la programmation.</p>
+            <p class="text-lg text-gray-700 mb-4">Nombre de leçons disponibles: @Model.NumberOfLessons</p>
+            <p class="text-lg text-gray-700 mb-4">Nombre d'exercices disponibles: @Model.NumberOfExercices</p>
+            <p class="text-lg text-gray-700 mb-4">Nombre d'étudiants inscrits: @Model.Users</p>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a asp-area="Identity" asp-page="/Account/Login" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600">Se connecter</a>
+            }
+        </div>
+
+    </main>
+    </body>
+</html>

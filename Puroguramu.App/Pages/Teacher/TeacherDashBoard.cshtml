@@ -1,0 +1,28 @@
+﻿@page "Dashboard/Teacher"
+@model Puroguramu.App.Pages.Teacher.TeacherDashBoard
+
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="UTF-8">
+    </head>
+<body>
+    <div class="container mx-auto mt-8" style="margin-left: 2rem">
+        <br/>
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Teacher Dashboard</h1>
+        <br/>
+        <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/LessonGenerator">Créer une leçon</a>
+        <br/>
+        @if (Model.LessonList.Count == 0)
+        {
+            <p>Aucune leçon trouvée</p>
+        }
+        @foreach (var item in Model.LessonList)
+        {
+            <partial name="Shared/_TeacherLesson" model="item"/>
+        }
+    </div>
+</body>
+</html>

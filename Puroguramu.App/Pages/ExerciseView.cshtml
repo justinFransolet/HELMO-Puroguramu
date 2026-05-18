@@ -1,0 +1,87 @@
+﻿@page "/exercice/{idExercise:guid}"
+
+@model Puroguramu.App.Pages.ExerciseViewModel
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <title>@ViewData["title"]</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        /* Style pour définir la taille du conteneur de l'éditeur */
+        #ProposalEditor {
+            width: 100%; /* ou une valeur spécifique en pixels */
+            height: 400px; /* ou une valeur spécifique en pixels */
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.js" integrity="sha512-hWCQiPFpU0dM1jkN2dkt/OrdSXO4KN5y2utMvF0ZkacWmRvbOlEygqBW0YiJwq/nn6iywh4XnMGMG6ESQYM7WA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="container mx-auto mt-8">
+<main>
+    <div class="border-b border-gray-900/10 pb-12" style="margin:1.5rem">
+        <h2 class="text-3xl font-semibold leading-7 text-gray-900">Exercice : @Model.Exercice.Name</h2>
+        <h2 class="text-1xl font-semibold leading-7 text-gray-900">Difficulté : @Model.Exercice.Difficulty</h2>
+        <h2 class="text-1xl font-semibold leading-7 text-gray-900">Énoncé : @Model.Exercice.States</h2>
+        <br/>
+        <form method="post">
+            <div>
+                <div>
+                    <span class="text-sm font-medium leading-6 text-gray-900">Status: </span>
+                    <strong>@Model.ExerciseResultStatus</strong>
+                </div>
+                <div>
+                    <div>
+                        <div id="ProposalEditor">@Model.Proposal</div>
+                        <div style="margin-top: 0.5rem" class="flex items-center gap-x-4 text-xs">
+                            <button class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Exécuter</button>
+                            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/SolutionView" asp-route-idExercise="@Model.IdExercise">Voir solution</a>
+                        </div>
+                        <input asp-for="IdExercise" type="hidden"/>
+                        <input asp-for="Proposal" type="hidden"/>
+                    </div>
+                    <div>
+                        <h4 class="block text-sm font-medium leading-6 text-gray-900">Résultats</h4>
+                        @foreach (TestResultViewModel testResult in Model.TestResult)
+                        {
+                            <div>
+                                <h5><span>@testResult.Status</span>&nbsp;@testResult.Label</h5>
+                                @if (testResult.HasError)
+                                {
+                                    <p>@testResult.ErrorMessage</p>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</main>
+<script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+         
+            console.log("DOM is ready");
+           const proposalEditor = ace.edit("ProposalEditor");
+           const proposalInput = document.getElementById("Proposal");
+           
+                       console.log("DOM is ready");
+
+           proposalEditor.setTheme("ace/theme/xcode");
+           proposalEditor.session.setMode("ace/mode/csharp");
+                       console.log("DOM is ready");
+
+           proposalInput.value = proposalEditor.session.getValue();
+           proposalEditor.session.on('change', () => {
+               proposalInput.value = proposalEditor.session.getValue();
+           });     
+                       console.log("DOM is ready");
+
+    });
+</script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+</body>
+</html>

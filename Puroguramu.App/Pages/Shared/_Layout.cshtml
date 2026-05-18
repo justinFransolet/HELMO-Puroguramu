@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html lang="fr" class="h-full bg-white">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="~/css/output.css"/>
+    <link rel="stylesheet" href="~/css/stylesheet.css"/>
+    <link href="@Url.Content("~/css/stylesheet.css")" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Puroguramu</title>
+</head>
+<body class="h-full">
+<header>
+    <nav class="bg-gray-700">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="relative flex h-16 items-center justify-between">
+          <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+            <div class="flex flex-shrink-0 items-center">
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            </div>
+            <div class="hidden sm:ml-6 sm:block">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a id="index-link" class="rounded-md px-3 py-2 text-sm font-medium" aria-current="page" asp-page="/index">Accueil</a>
+                <a id="dashboard-link" class="rounded-md px-3 py-2 text-sm font-medium" aria-current="page" asp-page="/dashboard">Dashboard</a>
+                @if(User.IsInRole("Teacher"))
+                {
+                    <a id="teacher-dashboard-link" class="rounded-md px-3 py-2 text-sm font-medium" aria-current="page" asp-page="/Teacher/TeacherDashboard">Teacher - Dashboard</a>
+                }
+                <a id="profile-link" class="rounded-md px-3 py-2 text-sm font-medium" asp-area="Identity" asp-page="/Account/Manage/Index">profile</a>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+              <div>
+                <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                  <span class="absolute -inset-1.5"></span>
+                  <span class="sr-only">Open user menu</span>
+                  <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </button>
+              </div>
+    
+              <!--
+                Dropdown menu, show/hide based on menu state.
+    
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+              <div class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1" 
+                   id="dropdown-menu">
+                  <!-- Active: "bg-gray-100", Not Active: "" -->
+                  @if (User.Identity.IsAuthenticated)
+                  {
+                      <a asp-area="Identity" asp-page="/Account/Manage/Index"  class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Account</a>
+                      <a asp-area="Identity" asp-page="/Account/Logout" class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                  }
+                  else
+                  {
+                      <a asp-area="Identity" asp-page="/Account/Login"  class="hover:bg-gray-100 block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Login</a>
+                  }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer>
+    <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Privacy">Privacy</a>
+    <div class="container" style="margin: 1rem;">
+        &copy; 2024 - Puroguramu - Fransolet Justin - Lemlijn Clément
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/tailwind.js"></script>
+
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

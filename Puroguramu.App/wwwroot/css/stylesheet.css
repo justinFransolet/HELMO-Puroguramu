@@ -1,0 +1,122 @@
+﻿.logo{
+    border-radius: 10% 10% 10% 10%;
+    border: 0.15rem solid #FFFFFF;
+}
+/*.body{*/
+/*    background-color: #D2CAEC;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*}*/
+/*.text{*/
+/*    color: #370028;*/
+/*}*/
+/*.error{*/
+/*    color: #A52A2A;*/
+/*}*/
+/*.btn{*/
+/*    border: 0.1rem solid #FFFFFF;*/
+/*    width: 6rem;*/
+/*    height: 2rem;*/
+/*    color: #370028;*/
+/*    background-color: #FFFFFF;*/
+/*}*/
+/*.btn:hover{*/
+/*    color: #FFFFFF;*/
+/*    background-color: #370028;*/
+/*    transition: all 0.7s linear;*/
+/*}*/
+/*.nav-item{*/
+/*    list-style-type: none;*/
+/*}*/
+/*.nav-link{*/
+/*    border: 0.1rem solid #FFFFFF;*/
+/*    color: #370028;*/
+/*    font-size: 1rem;*/
+/*    background-color: #FFFFFF;*/
+/*    padding:0.5rem;*/
+/*    margin: 0.5rem;*/
+/*}*/
+/*.nav-link:hover{*/
+/*    color: #FFFFFF;*/
+/*    background-color: #370028;*/
+/*    transition: all 0.7s linear;*/
+/*}*/
+/*.nav-bar{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+/*.form-group{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    margin: 0.5rem;*/
+/*}*/
+/*.lesson-frame{*/
+/*    margin: 0.5rem;*/
+/*    padding: 1rem;*/
+/*    border: solid 0.1rem #000000;*/
+/*    border-radius: 1rem;*/
+/*    background-color: #FFFFFF;*/
+/*    color: #370028;*/
+/*}*/
+/*.exercise-frame{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    align-items: center;*/
+/*    margin: 0.5rem;*/
+/*    padding: 1rem;*/
+/*    border: solid 0.1rem #000000;*/
+/*    border-radius: 1rem;*/
+/*    background-color: #FFFFFF;*/
+/*    color: #370028;*/
+/*}*/
+/*.exercise-frame-finish{*/
+/*    margin: 0.5rem;*/
+/*    padding: 1rem;*/
+/*    border: solid 0.1rem #228b22;*/
+/*    border-radius: 1rem;*/
+/*    background-color: #FFFFFF;*/
+/*    color: #370028;*/
+/*}*/
+/*.difficulty-frame{*/
+/*    margin: 0.2rem;*/
+/*    padding: 0.5rem;*/
+/*    border: solid 0.1rem #000000;*/
+/*    border-radius: 1rem;*/
+/*    color: #FFFFFF;*/
+/*}*/
+/*.easy-color{*/
+/*    background-color: #228b22;*/
+/*}*/
+/*.medium-color{*/
+/*    background-color: #FF7F50;*/
+/*}*/
+/*.difficult-color{*/
+/*    background-color: #A52A2A;*/
+/*}*/
+
+
+/* CSS */
+#dropdown-menu {
+    /* Transition pour l'affichage du menu */
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    /* Styles initiaux */
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+#dropdown-menu.hidden {
+    /* Styles lorsque le menu est caché */
+    transform: scale(0.95);
+    opacity: 0;
+    /* Transition lors de la sortie du menu */
+    transition: opacity 0.15s ease-in, transform 0.15s ease-in;
+}
+
+#dropdown-menu.block {
+    /* Styles lorsque le menu est affiché */
+    transform: scale(1);
+    opacity: 1;
+}

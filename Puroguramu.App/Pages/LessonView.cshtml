@@ -1,0 +1,22 @@
+﻿@page "/lesson/{idLesson:guid}"
+@model Puroguramu.App.Pages.LessonView
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <title>@ViewData["title"]</title>
+    <meta charset="UTF-8">
+    <link href="css/stylesheet.css" rel="stylesheet">
+</head>
+    <body class="container mx-auto mt-8">
+        <div class="border-b border-gray-900/10 pb-12" style="margin:1.5rem">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900">@Model.DataLesson.Name</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">@Model.DataLesson.Description</p>
+            @foreach (var exercise in Model.ExercisesList.OrderBy(e => e.Position))
+           {
+               <partial name="Shared/_Exercise" model="exercise"/>
+           }
+        </div>
+    </body>
+</html>

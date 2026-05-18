@@ -1,0 +1,13 @@
+﻿@model Puroguramu.Domains.Lesson.LessonDisplay
+
+<article class="flex max-w-xl flex-col items-start justify-between">
+    <div class="group relative" style="border: black solid 2px;padding: 0.4rem;border-radius: 0.6rem">
+        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            Leçon : @Model.Name
+        </h3>
+        <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">@Model.NbrExerciseFinish / @Model.NbrExercise exercices finis</p>
+        <div class="flex items-center gap-x-4 text-xs">
+             <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/LessonView" asp-route-idLesson="@Model.IdLesson">Faire l'exercice suivant</a>
+        </div>
+    </div>
+</article>

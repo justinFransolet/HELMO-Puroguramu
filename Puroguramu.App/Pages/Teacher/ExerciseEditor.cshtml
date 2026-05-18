@@ -1,0 +1,83 @@
+﻿@page "exercise/edit/{idExercise:guid}"
+@model Puroguramu.App.Pages.Teacher.ExerciseEditor
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="UTF-8">
+    <link href="css/stylesheet.css" rel="stylesheet">
+</head>
+    <body class="container mx-auto mt-8">
+    <form method="post">
+        <input type="hidden" asp-for="IdExercise"/>
+        <div class="border-b border-gray-900/10 pb-12" style="margin:1.5rem">
+            <h2 class="text-3xl font-semibold leading-7 text-gray-900">Exercice : @Model.ValidData.Name</h2>
+            <p class="mt-1 text-sm leading-6 text-gray-600">Vous pouvez modifier cet exercice pour vos étudiants.</p>
+            <form method="post" class="mt-10 grid grid-cols-1 gap-y-8 sm:grid-cols-6 flex-col" style="margin-bottom: 1rem">
+                <input type="hidden" asp-for="IdExercise"/>
+                <div class="col-span-full">
+                    <label asp-for="Input.Name" class="block text-sm font-medium leading-6 text-gray-900">
+                        Nom :
+                        <input type="text" asp-for="Input.Name" placeholder="@Model.ValidData.Name" class="mt-2 rounded-md"/>
+                    </label>
+                    <span asp-validation-for="Input.Name" class="error"></span>
+                </div>
+                <div class="col-span-full">
+                    <label asp-for="Input.State" class="block text-sm font-medium leading-6 text-gray-900">
+                        Énoncé :
+                        <textarea asp-for="Input.State" placeholder="@Model.ValidData.State" cols="100" rows="10" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    </label>
+                    <span asp-validation-for="Input.State" class="error"></span>
+                </div>
+                <div class="col-span-full">
+                    <label asp-for="Input.Difficulty" class="block text-sm font-medium leading-6 text-gray-900">
+                        Difficulty :
+                        <input type="text" asp-for="Input.Difficulty" placeholder="@Model.ValidData.Difficulty" class="mt-2 rounded-md"/>
+                    </label>
+                    <span asp-validation-for="Input.Difficulty" class="error"></span>
+                </div>
+                <div class="col-span-full">
+                    <label asp-for="Input.Publish" class="block text-sm font-medium leading-6 text-gray-900">
+                        Publié :
+                        <input type="checkbox" asp-for="Input.Publish" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"/>
+                    </label>
+                    <span asp-validation-for="Input.Publish" class="error"></span>
+                </div>
+                <div class="col-span-full">
+                    <label asp-for="Input.Model" class="block text-sm font-medium leading-6 text-gray-900">
+                        Modèle :
+                        <textarea asp-for="Input.Model" placeholder="@Model.ValidData.Model" cols="100" rows="20" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    </label>
+                    <span asp-validation-for="Input.Model" class="error"></span>
+                </div>
+                <div class="col-span-full">
+                    <label asp-for="Input.Solution" class="block text-sm font-medium leading-6 text-gray-900">
+                        Solution :
+                        <textarea asp-for="Input.Solution" placeholder="@Model.ValidData.Solution" cols="100" rows="20" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    </label>
+                    <span asp-validation-for="Input.Solution" class="error"></span>
+                </div>
+                @if (Model.ResultError)
+                {
+                    <h4 class="block text-sm font-medium leading-6 text-gray-900">Résultats</h4>
+                    @foreach (TestResultViewModel testResult in Model.TestResult)
+                    {
+                        <div>
+                            <h5><span>@testResult.Status</span>&nbsp;@testResult.Label</h5>
+                            @if (testResult.HasError)
+                            {
+                                <p>@testResult.ErrorMessage</p>
+                            }
+                        </div>
+                    }   
+                }
+            </form>
+            <button type="submit" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Modifier</button>
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/LessonEditor" asp-route-idLesson="@Model.IdLesson">Retour</a>
+        </div>
+
+    </form>
+    </body>
+</html>

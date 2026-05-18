@@ -1,0 +1,32 @@
+﻿@page "lesson/edit/newExercise/{idLesson:guid}"
+@model Puroguramu.App.Pages.Teacher.NewExercise
+
+<!DOCTYPE html>
+
+<html lang="fr">
+    <head>
+        <title>@ViewData["Title"]</title>
+        <meta charset="UTF-8">
+        <link href="css/stylesheet.css" rel="stylesheet">
+    </head>
+    <body class="body">
+        <form method="post">
+            <input asp-for="IdLesson" type="hidden">
+            <div class="border-b border-gray-900/10 pb-12" style="margin:1.5rem">
+                <h2 class="text-3xl font-semibold leading-7 text-gray-900">Créer un exercise</h2>
+                <p class="mt-1 text-sm leading-6 text-gray-600">Créer un exercice : attention il ne peut pas y avoir 2 fois le même exercice.</p>
+                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" style="margin-bottom: 1rem">
+                    <div class="sm:col-span3">
+                        <label asp-for="Name" class="block text-sm font-medium leading-6 text-gray-900">
+                            Nom :
+                            <input type="text" asp-for="Name" placeholder="Name" class="mt-2 rounded-md"/>
+                        </label>
+                        <span asp-validation-for="Name" class="error"></span>
+                    </div>
+                </div>
+                <button type="submit" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Créer</button>
+                <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/TeacherDashBoard">Retour</a>
+            </div>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+﻿@using Puroguramu.Infrastructures.Data.Entities
+@using Microsoft.AspNetCore.Identity
+@* <div class="align-content-end"> *@
+@*     @if (User.Identity.IsAuthenticated) *@
+@*     { *@
+@*         <a class="nav-link" asp-area="Identity" asp-page="/Account/Logout">Sign Out</a> *@
+@*     } *@
+@*     else *@
+@*     { *@
+@*         <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Sign In</a> *@
+@*     } *@
+@* </div> *@
+
+@inject UserManager<IdentityPuroguramuUser> UserManager
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+}
+
+<div class="align-content-end">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-area="Identity" asp-page="/Account/Logout" class="nav-link">Sign Out</a>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login" class="nav-link">Sign In</a>
+    }
+</div>

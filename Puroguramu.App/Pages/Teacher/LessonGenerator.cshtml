@@ -1,0 +1,30 @@
+﻿@page "/lesson/create"
+@model Puroguramu.App.Pages.Teacher.LessonGenerator
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <title>@ViewData["Title"]</title>
+    <meta charset="UTF-8">
+</head>
+<body class="container mx-auto mt-8">
+<form method="post">
+    <div class="border-b border-gray-900/10 pb-12" style="margin:1.5rem">
+      <h2 class="text-3xl font-semibold leading-7 text-gray-900">Nouvelle leçon</h2>
+      <p class="mt-1 text-sm leading-6 text-gray-600">Créer une nouvelle leçon avec un nom unique.</p>
+        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" style="margin-bottom: 1rem">
+            <div class="sm:col-span3">
+                <label asp-for="Name" class="block text-sm font-medium leading-6 text-gray-900">
+                    Nom :
+                </label>
+                <input class="mt-2 rounded-md" type="text" asp-for="Name" placeholder="Name"/>
+                <span asp-validation-for="Name" class="error"></span>
+            </div>
+        </div>
+        <button type="submit" class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Créer</button>
+        <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/TeacherDashBoard">Retour</a>
+    </div>
+</form>
+</body>
+</html>

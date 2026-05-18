@@ -1,0 +1,25 @@
+﻿@model Puroguramu.Domains.Exercice.TeacherExerciseDisplay
+
+@{
+    ViewData["difficulty"] = Model.Difficulty == "Easy" ? "#38d161AA" : @Model.Difficulty == "Medium" ? "#dba032AA" : "#a83232AA";
+}
+<article class="flex max-w-xl flex-col items-start justify-between">
+    <div class="group relative">
+        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            @Model.Name
+        </h3>
+        <p style="margin: 0.2rem;
+                  padding: 0.5rem;
+                  border: solid 0.1rem #000000;
+                  border-radius: 1rem;
+                  color: #FFFFFF;
+                  background-color: @ViewData["difficulty"];">@Model.Difficulty</p>
+        <div class="flex items-center gap-x-4 text-xs">
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/ExerciseEditor" asp-route-idExercise="@Model.IdExercise">Editer</a>
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/ExerciseSuppressor" asp-route-idExercise="@Model.IdExercise">Supprimer</a>
+        </div>
+        <p>Position : @Model.Position</p>
+    </div>
+    
+</article>
+

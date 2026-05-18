@@ -1,0 +1,15 @@
+﻿@model Puroguramu.Domains.Lesson.LessonTeacherDisplay
+
+<article class="flex max-w-xl flex-col items-start justify-between">
+    <div class="group relative">
+        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+            Leçon : @Model.Name
+        </h3>
+        <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">@Model.NbrStudentFinish / @Model.NbrStudent ont fini leurs exercices</p>
+        <div class="flex items-center gap-x-4 text-xs">
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/LessonEditor" asp-route-idLesson="@Model.IdLesson">Éditer</a>
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/NewExercise" asp-route-idLesson="@Model.IdLesson">Ajouter un exercice</a>
+            <a class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100" asp-page="/Teacher/LessonSuppressor" asp-route-idLesson="@Model.IdLesson">Supprimer</a>
+        </div>
+    </div>
+</article>
