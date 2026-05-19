@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Install SonarScanner for .NET
         run: |
-          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global dotnet-sonarscanner --version 5.15.0
           # Cette ligne magique force GitHub Actions à recharger le PATH sous Windows/PowerShell
           echo "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf-8 -Append
       - name: Begin SonarCloud Analysis
